@@ -153,6 +153,7 @@ public final class Autocapitalisation
     switch (c)
     {
       case ' ':
+      case '\n':
         return true;
       default:
         return false;
