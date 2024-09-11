@@ -91,8 +91,8 @@ public final class Config
     // static values
     marginTop = res.getDimension(R.dimen.margin_top);
     keyPadding = res.getDimension(R.dimen.key_padding);
-    labelTextSize = 0.33f + 1.67f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.396f;//0.33f *+ 0.2
-    sublabelTextSize = 0.22f + 1.2f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.22f *+ 0.2
+    labelTextSize = 0.33f;// + 1.67f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.396f;//0.33f *+ 0.2
+    sublabelTextSize = 0.22f;// + 1.2f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.22f *+ 0.2
     try
     {
       number_row = KeyboardData.load_number_row(res);
@@ -132,12 +132,14 @@ public final class Config
       if ("landscape".equals(show_numpad_s))
         show_numpad = true;
       keyboardHeightPercent = _prefs.getInt("keyboard_height_landscape", 50);
-      characterSizeScale = 1.25f;
+      //characterSizeScale = 1.25f;
     }
     else
     {
       keyboardHeightPercent = _prefs.getInt("keyboard_height", 35);
     }
+    // experiment with characterSizeScale
+    characterSizeScale = 1.f + 1.67f * Math.abs( 0.35f - (keyboardHeightPercent / 100.f) );
     layouts = LayoutsPreference.load_from_preferences(res, _prefs);
     inverse_numpad = _prefs.getString("numpad_layout", "default").equals("low_first");
     add_number_row = _prefs.getBoolean("number_row", false);
