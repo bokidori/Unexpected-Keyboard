@@ -91,8 +91,8 @@ public final class Config
     // static values
     marginTop = res.getDimension(R.dimen.margin_top);
     keyPadding = res.getDimension(R.dimen.key_padding);
-    labelTextSize = 0.33f + 1.67f * ( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.396f;//0.33f *+ 0.2
-    sublabelTextSize = 0.22f + 1.3f * ( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.22f *+ 0.2
+    labelTextSize = 0.33f + 1.67f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.396f;//0.33f *+ 0.2
+    sublabelTextSize = 0.22f + 1.3f * Math.abs( 0.35f - (_prefs.getInt("keyboard_height", 35) / 100.f) );//0.22f *+ 0.2
     try
     {
       number_row = KeyboardData.load_number_row(res);
